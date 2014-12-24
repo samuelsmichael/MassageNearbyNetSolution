@@ -1,0 +1,16 @@
+<publishData>
+  <publishTarget publishUrl="\\rnsers\MassageNearby\">
+    <file relUrl="bin/Common.pdb" publishTime="12/13/2014 16:54:42" />
+    <file relUrl="FileUpload.aspx" publishTime="12/24/2014 00:30:04" />
+    <file relUrl="bin/MassageNearby.dll" publishTime="12/24/2014 05:23:15" />
+    <file relUrl="bin/MassageNearby.pdb" publishTime="12/24/2014 05:23:15" />
+    <file relUrl="bin/Newtonsoft.Json.xml" publishTime="05/14/2014 21:51:58" />
+    <file relUrl="Web.config" publishTime="11/29/2014 22:29:28" />
+    <file relUrl="Default.aspx" publishTime="11/29/2014 14:13:46" />
+    <file relUrl="bin/Newtonsoft.Json.pdb" publishTime="05/14/2014 21:51:58" />
+    <file relUrl="bin/Common.dll" publishTime="12/13/2014 16:54:43" />
+    <file relUrl="Masseur.aspx" publishTime="11/29/2014 15:59:00" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="05/14/2014 21:51:58" />
+    <file relUrl="Client.aspx" publishTime="12/13/2014 13:50:34" />
+  </publishTarget>
+</publishData>

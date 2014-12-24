@@ -1,0 +1,10 @@
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\bin\MassageNearby.dll
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\bin\MassageNearby.pdb
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\bin\Common.dll
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\bin\Newtonsoft.Json.dll
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\bin\Common.pdb
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\bin\Newtonsoft.Json.pdb
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\bin\Newtonsoft.Json.xml
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\obj\Debug\MassageNearby.dll
+C:\Users\Diamond\Documents\Visual Studio 2008\Projects\MassageNearbySolution\MassageNearby\obj\Debug\MassageNearby.pdb
