@@ -6,7 +6,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>Masseur.aspx?Name=</StartPageUrl>
+          <StartPageUrl>Masseur.aspx?Action=set&amp;UserId=64&amp;Latitude=39.7144534&amp;Longitude=-105.0592715</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>

@@ -25,6 +25,10 @@ namespace MassageNearby {
         public string MainPictureURL { get; set; }
         [DataMemberAttribute]
         public string CertifiedPictureURL { get; set; }
+        [DataMemberAttribute]
+        public decimal Longitude { get; set; }
+        [DataMemberAttribute]
+        public decimal Latitude { get; set; }
 
         public WebServiceItem objectFromDatasetRowPublic(DataRow dr) {
             return objectFromDatasetRow(dr);
@@ -39,6 +43,8 @@ namespace MassageNearby {
             masseur.IsOnline = Utils.ObjectToBool(dr["IsOnline"]);
             masseur.MainPictureURL=Utils.ObjectToString(dr["MainPictureURL"]);
             masseur.CertifiedPictureURL = Utils.ObjectToString(dr["CertifiedPictureURL"]);
+            masseur.Longitude = Utils.ObjectToDecimal(dr["Longitude"]);
+            masseur.Latitude=Utils.ObjectToDecimal(dr["Latitude"]);
             return masseur;
         }
 
