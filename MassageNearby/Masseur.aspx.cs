@@ -63,6 +63,35 @@ namespace MassageNearby {
                     if (Common.Utils.isNothingNot(masseurname)) {
                         cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = masseurname;
                     }
+                    string password = Request.QueryString["Password"];
+                    if (Common.Utils.isNothingNot(password)) {
+                        cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = password;
+                    }
+                    string mpurl = Request.QueryString["MainPictureURL"];
+                    if (Common.Utils.isNothingNot(mpurl)) {
+                        cmd.Parameters.Add("@MainPictureURL", SqlDbType.VarChar).Value = mpurl;
+                    }
+
+                    string mpurl1 = Request.QueryString["PrivatePicture1URL"];
+                    if (Common.Utils.isNothingNot(mpurl1)) {
+                        cmd.Parameters.Add("@PrivatePicture1URL", SqlDbType.VarChar).Value = mpurl1;
+                    }
+                    string mpurl2 = Request.QueryString["PrivatePicture2URL"];
+                    if (Common.Utils.isNothingNot(mpurl2)) {
+                        cmd.Parameters.Add("@PrivatePicture2URL", SqlDbType.VarChar).Value = mpurl2;
+                    }
+                    string mpurl3 = Request.QueryString["PrivatePicture3URL"];
+                    if (Common.Utils.isNothingNot(mpurl3)) {
+                        cmd.Parameters.Add("@PrivatePicture3URL", SqlDbType.VarChar).Value = mpurl3;
+                    }
+                    string mpurl4 = Request.QueryString["PrivatePicture4URL"];
+                    if (Common.Utils.isNothingNot(mpurl4)) {
+                        cmd.Parameters.Add("@PrivatePicture4URL", SqlDbType.VarChar).Value = mpurl4;
+                    }
+                    string cpurl = Request.QueryString["CertifiedPictureURL"];
+                    if (Common.Utils.isNothingNot(cpurl)) {
+                        cmd.Parameters.Add("@CertifiedPictureURL", SqlDbType.VarChar).Value = cpurl;
+                    }
                     string longitude = Request.QueryString["Longitude"];
                     if (Common.Utils.isNothingNot(longitude)) {
                         cmd.Parameters.Add("@Longitude", SqlDbType.Decimal).Value = Convert.ToDecimal(longitude);
@@ -71,6 +100,31 @@ namespace MassageNearby {
                     if (Common.Utils.isNothingNot(latitude)) {
                         cmd.Parameters.Add("@Latitude", SqlDbType.Decimal).Value = Convert.ToDecimal(latitude);
                     }
+                    string birthDate = Request.QueryString["Birthdate"];
+                    if (birthDate != null) {
+                        cmd.Parameters.Add("@Birthdate", SqlDbType.DateTime).Value = birthDate;
+                    }
+                    string subenddate = Request.QueryString["SubscriptionEndDate"];
+                    if (subenddate != null) {
+                        cmd.Parameters.Add("@SubscriptionEndDate", SqlDbType.DateTime).Value = subenddate;
+                    }
+                    string height = Request.QueryString["Height"];
+                    if (Common.Utils.isNothingNot(height)) {
+                        cmd.Parameters.Add("@Height", SqlDbType.VarChar).Value = height;
+                    }
+                    string ethnicity = Request.QueryString["Ethnicity"];
+                    if (Common.Utils.isNothingNot(ethnicity)) {
+                        cmd.Parameters.Add("@Ethnicity", SqlDbType.VarChar).Value = ethnicity;
+                    }
+                    string bio = Request.QueryString["Bio"];
+                    if (Common.Utils.isNothingNot(bio)) {
+                        cmd.Parameters.Add("@Bio", SqlDbType.VarChar).Value = bio;
+                    }
+                    string services = Request.QueryString["Services"];
+                    if (Common.Utils.isNothingNot(ethnicity)) {
+                        cmd.Parameters.Add("@Services", SqlDbType.VarChar).Value = services;
+                    }
+
                     DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);
                     // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
 

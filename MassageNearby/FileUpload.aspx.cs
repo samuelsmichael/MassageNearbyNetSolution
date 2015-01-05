@@ -42,23 +42,22 @@ namespace MassageNearby {
                     if (vTransaction.Equals("MasseurUploadMainPicture")) {
                         if (!string.IsNullOrEmpty(Request.Form["UserId"])) {
                             vUserId = Request.Form["UserId"];
-                                        //Response.Write("UserId=" + vUserId + "</br>");
+                            //Response.Write("UserId=" + vUserId + "</br>");
 
                             string fileName = MyFileCollection[0].FileName + ".jpg";
-                                        //Response.Write("FileName="+fileName+"\n");
-                if (MyFileCollection.Count > 0) {
-                    // Save the File
-                    MyFileCollection[0].SaveAs(Server.MapPath("/files/" +fileName));
-                }
-                            
-                            
+                            //Response.Write("FileName="+fileName+"\n");
+                            if (MyFileCollection.Count > 0) {
+                                // Save the File
+                                MyFileCollection[0].SaveAs(Server.MapPath("/files/" + fileName));
+                            }
+
                             //Response.Write("bud: " + fileName+"\n");
                             SqlCommand cmd = new SqlCommand("uspMasseurSet");
                             cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(vUserId);
                             cmd.Parameters.Add("@MainPictureURL", SqlDbType.VarChar).Value = fileName;
                             DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);
-                           // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
-                            
+                            // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
+
                             List<Masseur> list = new List<Masseur>();
                             Masseur mass = new Masseur();
                             foreach (DataRow dr in ds.Tables[0].Rows) {
@@ -75,8 +74,199 @@ namespace MassageNearby {
                                 jsonTextWriter.Flush();
                             }
                             Utils.jsonSerializeStep2(ms, Response);
-                             
+                        }
+                    }
+                    else {
+                        if (vTransaction.Equals("MasseurUploadPrivatePicture1")) {
+                            if (!string.IsNullOrEmpty(Request.Form["UserId"])) {
+                                vUserId = Request.Form["UserId"];
+                                //Response.Write("UserId=" + vUserId + "</br>");
 
+                                string fileName = MyFileCollection[0].FileName + ".jpg";
+                                //Response.Write("FileName="+fileName+"\n");
+                                if (MyFileCollection.Count > 0) {
+                                    // Save the File
+                                    MyFileCollection[0].SaveAs(Server.MapPath("/files/" + fileName));
+                                }
+
+                                //Response.Write("bud: " + fileName+"\n");
+                                SqlCommand cmd = new SqlCommand("uspMasseurSet");
+                                cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(vUserId);
+                                cmd.Parameters.Add("@PrivatePicture1URL", SqlDbType.VarChar).Value = fileName;
+                                DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);
+                                // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
+
+                                List<Masseur> list = new List<Masseur>();
+                                Masseur mass = new Masseur();
+                                foreach (DataRow dr in ds.Tables[0].Rows) {
+                                    list.Add((Masseur)mass.objectFromDatasetRowPublic(dr));
+                                }
+                                JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                                MemoryStream ms = new MemoryStream();
+
+                                using (JsonTextWriter jsonTextWriter = new JsonTextWriter(
+                                    new StreamWriter(ms, new UTF8Encoding(false, true))) { CloseOutput = false }) {
+                                    serializer.Serialize(jsonTextWriter,
+                                        list
+                                    );
+                                    jsonTextWriter.Flush();
+                                }
+                                Utils.jsonSerializeStep2(ms, Response);
+                            }
+                        }
+                        else {
+                            if (vTransaction.Equals("MasseurUploadPrivatePicture2")) {
+                                if (!string.IsNullOrEmpty(Request.Form["UserId"])) {
+                                    vUserId = Request.Form["UserId"];
+                                    //Response.Write("UserId=" + vUserId + "</br>");
+
+                                    string fileName = MyFileCollection[0].FileName + ".jpg";
+                                    //Response.Write("FileName="+fileName+"\n");
+                                    if (MyFileCollection.Count > 0) {
+                                        // Save the File
+                                        MyFileCollection[0].SaveAs(Server.MapPath("/files/" + fileName));
+                                    }
+
+                                    //Response.Write("bud: " + fileName+"\n");
+                                    SqlCommand cmd = new SqlCommand("uspMasseurSet");
+                                    cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(vUserId);
+                                    cmd.Parameters.Add("@PrivatePicture2URL", SqlDbType.VarChar).Value = fileName;
+                                    DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);
+                                    // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
+
+                                    List<Masseur> list = new List<Masseur>();
+                                    Masseur mass = new Masseur();
+                                    foreach (DataRow dr in ds.Tables[0].Rows) {
+                                        list.Add((Masseur)mass.objectFromDatasetRowPublic(dr));
+                                    }
+                                    JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                                    MemoryStream ms = new MemoryStream();
+
+                                    using (JsonTextWriter jsonTextWriter = new JsonTextWriter(
+                                        new StreamWriter(ms, new UTF8Encoding(false, true))) { CloseOutput = false }) {
+                                        serializer.Serialize(jsonTextWriter,
+                                            list
+                                        );
+                                        jsonTextWriter.Flush();
+                                    }
+                                    Utils.jsonSerializeStep2(ms, Response);
+                                }
+                            } else {
+                                if (vTransaction.Equals("MasseurUploadPrivatePicture3")) {
+                                    if (!string.IsNullOrEmpty(Request.Form["UserId"])) {
+                                        vUserId = Request.Form["UserId"];
+                                        //Response.Write("UserId=" + vUserId + "</br>");
+
+                                        string fileName = MyFileCollection[0].FileName + ".jpg";
+                                        //Response.Write("FileName="+fileName+"\n");
+                                        if (MyFileCollection.Count > 0) {
+                                            // Save the File
+                                            MyFileCollection[0].SaveAs(Server.MapPath("/files/" + fileName));
+                                        }
+
+                                        //Response.Write("bud: " + fileName+"\n");
+                                        SqlCommand cmd = new SqlCommand("uspMasseurSet");
+                                        cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(vUserId);
+                                        cmd.Parameters.Add("@PrivatePicture3URL", SqlDbType.VarChar).Value = fileName;
+                                        DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);
+                                        // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
+
+                                        List<Masseur> list = new List<Masseur>();
+                                        Masseur mass = new Masseur();
+                                        foreach (DataRow dr in ds.Tables[0].Rows) {
+                                            list.Add((Masseur)mass.objectFromDatasetRowPublic(dr));
+                                        }
+                                        JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                                        MemoryStream ms = new MemoryStream();
+
+                                        using (JsonTextWriter jsonTextWriter = new JsonTextWriter(
+                                            new StreamWriter(ms, new UTF8Encoding(false, true))) { CloseOutput = false }) {
+                                            serializer.Serialize(jsonTextWriter,
+                                                list
+                                            );
+                                            jsonTextWriter.Flush();
+                                        }
+                                        Utils.jsonSerializeStep2(ms, Response);
+                                    }
+                                } else {
+                                    if (vTransaction.Equals("MasseurUploadPrivatePicture4")) {
+                                        if (!string.IsNullOrEmpty(Request.Form["UserId"])) {
+                                            vUserId = Request.Form["UserId"];
+                                            //Response.Write("UserId=" + vUserId + "</br>");
+
+                                            string fileName = MyFileCollection[0].FileName + ".jpg";
+                                            //Response.Write("FileName="+fileName+"\n");
+                                            if (MyFileCollection.Count > 0) {
+                                                // Save the File
+                                                MyFileCollection[0].SaveAs(Server.MapPath("/files/" + fileName));
+                                            }
+
+                                            //Response.Write("bud: " + fileName+"\n");
+                                            SqlCommand cmd = new SqlCommand("uspMasseurSet");
+                                            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(vUserId);
+                                            cmd.Parameters.Add("@PrivatePicture4URL", SqlDbType.VarChar).Value = fileName;
+                                            DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);
+                                            // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
+
+                                            List<Masseur> list = new List<Masseur>();
+                                            Masseur mass = new Masseur();
+                                            foreach (DataRow dr in ds.Tables[0].Rows) {
+                                                list.Add((Masseur)mass.objectFromDatasetRowPublic(dr));
+                                            }
+                                            JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                                            MemoryStream ms = new MemoryStream();
+
+                                            using (JsonTextWriter jsonTextWriter = new JsonTextWriter(
+                                                new StreamWriter(ms, new UTF8Encoding(false, true))) { CloseOutput = false }) {
+                                                serializer.Serialize(jsonTextWriter,
+                                                    list
+                                                );
+                                                jsonTextWriter.Flush();
+                                            }
+                                            Utils.jsonSerializeStep2(ms, Response);
+                                        }
+                                    }
+                                    else {
+                                        if (vTransaction.Equals("MasseurUploadCertifiedPicture")) {
+                                            if (!string.IsNullOrEmpty(Request.Form["UserId"])) {
+                                                vUserId = Request.Form["UserId"];
+                                                //Response.Write("UserId=" + vUserId + "</br>");
+
+                                                string fileName = MyFileCollection[0].FileName + ".jpg";
+                                                //Response.Write("FileName="+fileName+"\n");
+                                                if (MyFileCollection.Count > 0) {
+                                                    // Save the File
+                                                    MyFileCollection[0].SaveAs(Server.MapPath("/files/" + fileName));
+                                                }
+
+                                                //Response.Write("bud: " + fileName+"\n");
+                                                SqlCommand cmd = new SqlCommand("uspMasseurSet");
+                                                cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(vUserId);
+                                                cmd.Parameters.Add("@CertifiedPictureURL", SqlDbType.VarChar).Value = fileName;
+                                                DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);
+                                                // Response.Write("fred."+ds.Tables.Count+"  -  "+ds.Tables[0].Rows.Count+"\n");
+
+                                                List<Masseur> list = new List<Masseur>();
+                                                Masseur mass = new Masseur();
+                                                foreach (DataRow dr in ds.Tables[0].Rows) {
+                                                    list.Add((Masseur)mass.objectFromDatasetRowPublic(dr));
+                                                }
+                                                JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                                                MemoryStream ms = new MemoryStream();
+
+                                                using (JsonTextWriter jsonTextWriter = new JsonTextWriter(
+                                                    new StreamWriter(ms, new UTF8Encoding(false, true))) { CloseOutput = false }) {
+                                                    serializer.Serialize(jsonTextWriter,
+                                                        list
+                                                    );
+                                                    jsonTextWriter.Flush();
+                                                }
+                                                Utils.jsonSerializeStep2(ms, Response);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
