@@ -55,6 +55,8 @@ namespace MassageNearby {
         public int CertificationNumber { get; set; }
         [DataMemberAttribute]
         public string Password { get; set; }
+        [DataMemberAttribute]
+        public string Email { get; set; }
 
 
         public WebServiceItem objectFromDatasetRowPublic(DataRow dr) {
@@ -85,6 +87,7 @@ namespace MassageNearby {
             masseur.IsCertified = Utils.ObjectToBool(dr["IsCertified"]);
             masseur.CertificationNumber = Utils.ObjectToInt(dr["CertificationNumber"]);
             masseur.Password = Utils.ObjectToString(dr["Password"]);
+            masseur.Email = Utils.ObjectToString(dr["Email"]);
 
             return masseur;
         }

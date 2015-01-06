@@ -63,6 +63,10 @@ namespace MassageNearby {
                     if (Common.Utils.isNothingNot(masseurname)) {
                         cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = masseurname;
                     }
+                    string email=Request.QueryString["Email"];
+                    if (Common.Utils.isNothingNot(email)) {
+                        cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
+                    }
                     string password = Request.QueryString["Password"];
                     if (Common.Utils.isNothingNot(password)) {
                         cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = password;
