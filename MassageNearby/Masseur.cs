@@ -57,6 +57,8 @@ namespace MassageNearby {
         public string Password { get; set; }
         [DataMemberAttribute]
         public string Email { get; set; }
+        [DataMemberAttribute]
+        public int Port { get; set; }
 
 
         public WebServiceItem objectFromDatasetRowPublic(DataRow dr) {
@@ -72,8 +74,8 @@ namespace MassageNearby {
             masseur.IsOnline = Utils.ObjectToBool(dr["IsOnline"]);
             masseur.MainPictureURL=Utils.ObjectToString(dr["MainPictureURL"]);
             masseur.CertifiedPictureURL = Utils.ObjectToString(dr["CertifiedPictureURL"]);
-            masseur.Longitude = Utils.ObjectToDecimal(dr["Longitude"]);
-            masseur.Latitude=Utils.ObjectToDecimal(dr["Latitude"]);
+            masseur.Longitude = Utils.ObjectToDecimal0IfNull(dr["Longitude"]);
+            masseur.Latitude=Utils.ObjectToDecimal0IfNull(dr["Latitude"]);
             masseur.Birthdate = Utils.ObjectToDateTime(dr["Birthdate"]);
             masseur.Height = Utils.ObjectToString(dr["Height"]);
             masseur.Ethnicity = Utils.ObjectToString(dr["Ethnicity"]);
@@ -88,6 +90,7 @@ namespace MassageNearby {
             masseur.CertificationNumber = Utils.ObjectToInt(dr["CertificationNumber"]);
             masseur.Password = Utils.ObjectToString(dr["Password"]);
             masseur.Email = Utils.ObjectToString(dr["Email"]);
+            masseur.Port = Utils.ObjectToInt(dr["Port"]);
 
             return masseur;
         }

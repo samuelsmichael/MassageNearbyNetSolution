@@ -19,14 +19,24 @@ namespace MassageNearby {
         public string Name { get; set; }
         [DataMemberAttribute]
         public string URL { get; set; }
+        public string Password { get; set; }
+        [DataMemberAttribute]
+        public string Email { get; set; }
+        [DataMemberAttribute]
+        public int Port { get; set; }
 
-
+        public WebServiceItem objectFromDatasetRowPublic(DataRow dr) {
+            return objectFromDatasetRow(dr);
+        }
         protected override WebServiceItem objectFromDatasetRow(System.Data.DataRow dr) {
             Client client = new Client();
             client.UserId = Utils.ObjectToInt(dr["UserId"]);
             client.ClientId = Utils.ObjectToInt(dr["ClientId"]);
             client.Name = Utils.ObjectToString(dr["Name"]);
             client.URL = Utils.ObjectToString(dr["URL"]);
+            client.Password = Utils.ObjectToString(dr["Password"]);
+            client.Email = Utils.ObjectToString(dr["Email"]);
+            client.Port = Utils.ObjectToInt(dr["Port"]);
             return client;
         }
 

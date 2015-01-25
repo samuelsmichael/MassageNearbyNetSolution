@@ -31,6 +31,8 @@ namespace MassageNearby {
             String url = Request.QueryString["URL"];
             String masseurId = Request.QueryString["MasseurId"];
             String action=Request.QueryString["Action"];
+            String ipAddress = Request.QueryString["IPAddress"];
+            bool isDoingLogin = Utils.ObjectToBool(Request.QueryString["IsDoingLogin"]);
             MemoryStream ms = new MemoryStream();
             JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
             if (Common.Utils.isNothing(action)) { // for legacy
@@ -38,6 +40,9 @@ namespace MassageNearby {
                 SqlParameter parm = new SqlParameter("Name", SqlDbType.VarChar);
                 parm.Value = name;
                 command.Parameters.Add(parm);
+                if (isDoingLogin) {
+                    command.Parameters.Add("@IsDoingLogin", SqlDbType.Bit).Value = isDoingLogin;
+                }
                 if (url != null) {
                     SqlParameter parm2 = new SqlParameter("URL", SqlDbType.VarChar);
                     parm2.Value = url;
@@ -48,16 +53,22 @@ namespace MassageNearby {
                     parm3.Value = Convert.ToInt32(masseurId);
                     command.Parameters.Add(parm3);
                 }
-                using (JsonTextWriter jsonTextWriter = new JsonTextWriter(
-                    new StreamWriter(ms, new UTF8Encoding(false, true))) { CloseOutput = false }) {
-                    serializer.Serialize(jsonTextWriter, new Masseur().buildList(name, command));
-                    jsonTextWriter.Flush();
+                List<Masseur> jdListMasseur = new Masseur().buildList(name, command);
+                if (isDoingLogin && jdListMasseur.Count == 0) { // try logging in as a client
+                    Server.Transfer("Client.aspx?Name="+Server.UrlEncode(name)+"&URL="+Server.UrlEncode(ipAddress),true);
+                } else {
+                    using (JsonTextWriter jsonTextWriter = new JsonTextWriter(
+                        new StreamWriter(ms, new UTF8Encoding(false, true))) { CloseOutput = false }) {
+                        serializer.Serialize(jsonTextWriter, jdListMasseur);
+                        jsonTextWriter.Flush();
+                    }
                 }
                 Utils.jsonSerializeStep2(ms, Response);
             }
             else {
                 if (action.ToLower().Equals("set")) {
                     SqlCommand cmd = new SqlCommand("uspMasseurSet");
+
                     cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = Convert.ToInt32(Request.QueryString["UserId"]);
                     string masseurname = Request.QueryString["Name"];
                     if (Common.Utils.isNothingNot(masseurname)) {
@@ -67,9 +78,18 @@ namespace MassageNearby {
                     if (Common.Utils.isNothingNot(email)) {
                         cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
                     }
+                    string port = Request.QueryString["Port"];
+                    if (Common.Utils.isNothingNot(port)) {
+                        cmd.Parameters.Add("@Port", SqlDbType.Int).Value = Convert.ToInt32(port);
+                    }
                     string password = Request.QueryString["Password"];
                     if (Common.Utils.isNothingNot(password)) {
                         cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = password;
+                    }
+                    if (url != null) {
+                        SqlParameter parm2 = new SqlParameter("URL", SqlDbType.VarChar);
+                        parm2.Value = url;
+                        cmd.Parameters.Add(parm2);
                     }
                     string mpurl = Request.QueryString["MainPictureURL"];
                     if (Common.Utils.isNothingNot(mpurl)) {
@@ -127,6 +147,11 @@ namespace MassageNearby {
                     string services = Request.QueryString["Services"];
                     if (Common.Utils.isNothingNot(ethnicity)) {
                         cmd.Parameters.Add("@Services", SqlDbType.VarChar).Value = services;
+                    }
+                    String certificationNumberStr = Request.QueryString["CertificationNumber"];
+                    if (Common.Utils.isNothingNot(certificationNumberStr)) {
+                        int certificationNumber = Convert.ToInt32(certificationNumberStr);
+                        cmd.Parameters.Add("CertificationNumber", SqlDbType.Int).Value = certificationNumber;
                     }
 
                     DataSet ds = Common.Utils.getDataSet(cmd, ConnectionString);

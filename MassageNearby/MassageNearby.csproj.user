@@ -6,7 +6,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>Masseur.aspx?Action=set&amp;UserId=69&amp;MainPictureURL=MesseurUserId_69_XMainPicture_1420014137907.jpg&amp;CertifiedPictureURL=&amp;SubscriptionEndDate=2015-03-29&amp;Longitude=-105.0592215&amp;Latitude=39.7145341&amp;Height=5'&amp;Ethnicity=Oriental&amp;Services=DeepReflexology&amp;Bio=Lorem&amp;PrivatePicture1URL=MesseurUserId_69_XPrivatePicture_1_1420311872883.jpg&amp;PrivatePicture2URL=^&amp;PrivatePicture3URL=MesseurUserId_69_XPrivatePicture_3_1420295394070.jpg&amp;PrivatePicture4URL=^</StartPageUrl>
+          <StartPageUrl>Masseur.aspx?Name=m&amp;URL=10.105.188.46</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>
